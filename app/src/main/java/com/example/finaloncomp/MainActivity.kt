@@ -27,6 +27,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.finaloncomp.ui.theme.FInalOnCompTheme
 import com.example.finaloncomp.ui.theme.UserProfile
+import com.example.finaloncomp.ui.theme.WeekCalendar
 
 
 class MainActivity : ComponentActivity() {
@@ -45,7 +46,7 @@ class MainActivity : ComponentActivity() {
                             .padding(top = 16.dp)
                     ) {
                         UserProfile()
-
+                        WeekCalendar()
                     }
                 }
             }
