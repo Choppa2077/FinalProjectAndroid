@@ -6,11 +6,13 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -23,12 +25,13 @@ import java.util.*
 fun WeekCalendar() {
     val today = LocalDate.now()
     val startOfWeek = today.minusDays(today.dayOfWeek.value.toLong() - 1)
-    val datesOfWeek = (0..6).map { startOfWeek.plusDays(it.toLong()) }
+    val datesOfWeek = (3..9).map { startOfWeek.plusDays(it.toLong()) }
 
     LazyRow(
         modifier = Modifier
             .fillMaxWidth()
-            .background(Color(40, 40, 40)),
+            .padding(horizontal = 16.dp)
+            .background(Color.DarkGray, shape = MaterialTheme.shapes.medium),
         horizontalArrangement = Arrangement.SpaceBetween,
         contentPadding = PaddingValues(horizontal = 16.dp)
     ) {
@@ -57,11 +60,11 @@ fun DateView(date: LocalDate, isToday: Boolean) {
             contentAlignment = Alignment.Center,
             modifier = Modifier
                 .size(40.dp)
-                .background(if (isToday) Color.Yellow else Color.Transparent, shape = MaterialTheme.shapes.small)
+                .background(if (isToday)  Color(0xFFEFB509) else Color(0xFFD9D9D9), shape = MaterialTheme.shapes.small)
         ) {
             Text(
                 text = date.dayOfMonth.toString(),
-                color = if (isToday) Color.Black else Color.White,
+                color = Color.Black ,
                 textAlign = TextAlign.Center
             )
         }

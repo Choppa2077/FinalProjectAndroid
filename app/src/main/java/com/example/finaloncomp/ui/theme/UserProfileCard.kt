@@ -3,16 +3,21 @@ package com.example.finaloncomp.ui.theme
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.finaloncomp.R // Replace with your actual resource directory
@@ -29,14 +34,16 @@ fun GreetingCard(userName: String, profilePicture: Painter) {
         Column(
             modifier = Modifier.weight(1f)
         ) {
+            // Use buildAnnotatedString to create a styled string
             Text(
-                text = "Hello,",
-                color = Color.White,
-                style = MaterialTheme.typography.headlineMedium
-            )
-            Text(
-                text = userName,
-                color = Color.White,
+                text = buildAnnotatedString {
+                    withStyle(style = SpanStyle(color = Color.White)) {
+                        append("Hello, ")
+                    }
+                    withStyle(style = SpanStyle(color = Color(255, 193, 7))) {
+                        append(userName)
+                    }
+                },
                 style = MaterialTheme.typography.headlineMedium,
                 fontWeight = FontWeight.Bold
             )
@@ -44,17 +51,19 @@ fun GreetingCard(userName: String, profilePicture: Painter) {
             Text(
                 text = "Get ready for today's workout",
                 color = Color.Gray,
-                fontSize = 12.sp
+                fontSize = 14.sp
             )
         }
         Image(
             painter = profilePicture,
             contentDescription = "Profile Picture",
-            modifier = Modifier.size(48.dp),
+            modifier = Modifier.size(70.dp)
+                .clip(CircleShape),
             contentScale = ContentScale.Crop
         )
     }
 }
+
 
 @Composable
 fun UserProfile() {

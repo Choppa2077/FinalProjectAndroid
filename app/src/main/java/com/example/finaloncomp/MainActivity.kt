@@ -26,6 +26,7 @@ import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.finaloncomp.ui.theme.FInalOnCompTheme
+import com.example.finaloncomp.ui.theme.ReadyWorkoutCardsRow
 import com.example.finaloncomp.ui.theme.UserProfile
 import com.example.finaloncomp.ui.theme.WeekCalendar
 import com.example.finaloncomp.ui.theme.WorkoutCardsRow
@@ -51,6 +52,8 @@ class MainActivity : ComponentActivity() {
                         WeekCalendar()
                         Spacer(Modifier.height(16.dp))
                         WorkoutCardsRow()
+                        Spacer(Modifier.height(16.dp))
+                        ReadyWorkoutCardsRow()
                     }
                 }
             }

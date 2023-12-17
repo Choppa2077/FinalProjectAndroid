@@ -23,7 +23,7 @@ import androidx.compose.ui.unit.sp
 import com.example.finaloncomp.R // Replace with your actual resource directory
 
 
-data class WorkoutCardInfo(
+data class ReaadyWorkoutCardInfo(
     val title: String,
     val description: String,
     val imageRes: Int // Resource ID for the image
@@ -32,17 +32,17 @@ data class WorkoutCardInfo(
 
 // Dummy data
 
-val workoutCards = listOf(
-    WorkoutCardInfo("Abdomen", "It seems like you're interested in abdominal exercises...", R.drawable.abdomen),
-    WorkoutCardInfo("Abs", "Lorem Ipsum...", R.drawable.abdomen2),
-    WorkoutCardInfo("Biceps", "Lorem Ipsum...", R.drawable.abdomen3),
-    WorkoutCardInfo("Back", "Lorem Ipsum...", R.drawable.abdomen4),
+val readyWorkoutCards = listOf(
+    WorkoutCardInfo("Abdomen", "It seems like you're interested in abdominal exercises...", R.drawable.ready1),
+    WorkoutCardInfo("Abs", "Lorem Ipsum...", R.drawable.ready1),
+    WorkoutCardInfo("Biceps", "Lorem Ipsum...", R.drawable.ready1),
+    WorkoutCardInfo("Back", "Lorem Ipsum...", R.drawable.ready1),
     // ... other WorkoutCardInfo instances
 )
 
 
 @Composable
-fun WorkoutCard(cardInfo: WorkoutCardInfo) {
+fun ReadyWorkoutCard(cardInfo: WorkoutCardInfo) {
     val painter = painterResource(id = cardInfo.imageRes)
     Column(
         modifier = Modifier
@@ -79,13 +79,13 @@ fun WorkoutCard(cardInfo: WorkoutCardInfo) {
 }
 
 @Composable
-fun WorkoutCardsRow() {
+fun ReadyWorkoutCardsRow() {
     LazyRow(
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         contentPadding = PaddingValues(horizontal = 16.dp)
     ) {
-        items(workoutCards) { cardInfo ->
-            WorkoutCard(cardInfo)
+        items(readyWorkoutCards) { cardInfo ->
+            ReadyWorkoutCard(cardInfo)
         }
     }
 }
