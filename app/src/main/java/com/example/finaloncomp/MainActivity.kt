@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.RequiresApi
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -13,7 +14,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -41,6 +44,7 @@ import com.example.finaloncomp.ui.theme.SystemExercisesScreen
 
 
 class MainActivity : ComponentActivity() {
+    @OptIn(ExperimentalMaterial3Api::class)
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,12 +60,22 @@ class MainActivity : ComponentActivity() {
                             .padding(top = 16.dp)
                     ) {
                         val navController = rememberNavController()
-                        NavHost(navController, startDestination = ScreenRoutes.HOME) {
-                            composable(ScreenRoutes.HOME) { MainScreen(navController) }
-                            composable(ScreenRoutes.EXERCISES) { SystemExercisesScreen() }
-                            composable(ScreenRoutes.PROFILE) { ProfileScreen() }
-                            // Add other destinations here
-                        }
+                            Scaffold(
+                                bottomBar = { BottomNavigationBar(navController.currentDestination?.route ?: ScreenRoutes.HOME, navController) }
+                            ) { innerPadding ->
+                                Box(modifier = Modifier
+                                    .fillMaxSize()
+                                    .background(Color(0xFF282828))) { // Set the background color here
+                                    // Rest of your content
+                                    NavHost(navController, startDestination = ScreenRoutes.HOME, Modifier.padding(innerPadding)) {
+                                        composable(ScreenRoutes.HOME) { MainScreen(navController) }
+                                        composable(ScreenRoutes.EXERCISES) { SystemExercisesScreen() }
+                                        composable(ScreenRoutes.PROFILE) { ProfileScreen() }
+                                        // Add other destinations here
+                                    }
+                                }
+                            }
+
                     }
                 }
             }
@@ -70,20 +84,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    FInalOnCompTheme {
-        Greeting("Android")
-    }
-}
+
 
 

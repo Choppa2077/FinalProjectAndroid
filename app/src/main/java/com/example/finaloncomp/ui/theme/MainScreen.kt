@@ -39,9 +39,6 @@ fun MainScreen(navController: NavHostController) {
         },
         floatingActionButtonPosition = FabPosition.Center, // Correct position
         // Removed `isFloatingActionButtonDocked` as it might not be in Material 3
-        bottomBar = {
-            BottomNavigationBar(navController.currentDestination?.route ?: ScreenRoutes.HOME, navController)
-        }
 
     ){ innerPadding ->
         BodyContent(innerPadding, showDialog, programName, onProgramNameChange = { programName = it }, description, onDescriptionChange = { description = it }
@@ -138,7 +135,7 @@ fun CreateProgramDialog(
                         colors = ButtonDefaults.buttonColors(
                             containerColor = Color(0xFFFFC107) // Use 'containerColor', not 'backgroundColor'
                         )
-                       ) {
+                    ) {
                         Text("Save")
                     }
                 }
