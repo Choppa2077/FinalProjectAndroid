@@ -25,6 +25,8 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import com.example.finaloncomp.ui.theme.BottomNavigationBar
 import com.example.finaloncomp.ui.theme.FInalOnCompTheme
 import com.example.finaloncomp.ui.theme.MainScreen
@@ -32,6 +34,10 @@ import com.example.finaloncomp.ui.theme.ReadyWorkoutCardsRow
 import com.example.finaloncomp.ui.theme.UserProfile
 import com.example.finaloncomp.ui.theme.WeekCalendar
 import com.example.finaloncomp.ui.theme.WorkoutCardsRow
+import androidx.navigation.compose.rememberNavController
+import com.example.finaloncomp.ui.theme.ProfileScreen
+import com.example.finaloncomp.ui.theme.ScreenRoutes
+import com.example.finaloncomp.ui.theme.SystemExercisesScreen
 
 
 class MainActivity : ComponentActivity() {
@@ -49,8 +55,13 @@ class MainActivity : ComponentActivity() {
                             .fillMaxWidth()
                             .padding(top = 16.dp)
                     ) {
-                        MainScreen()
-
+                        val navController = rememberNavController()
+                        NavHost(navController, startDestination = ScreenRoutes.HOME) {
+                            composable(ScreenRoutes.HOME) { MainScreen(navController) }
+                            composable(ScreenRoutes.EXERCISES) { SystemExercisesScreen() }
+                            composable(ScreenRoutes.PROFILE) { ProfileScreen() }
+                            // Add other destinations here
+                        }
                     }
                 }
             }

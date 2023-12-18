@@ -15,16 +15,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
+import androidx.navigation.NavHostController
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
-fun MainScreen() {
+fun MainScreen(navController: NavHostController) {
     var showDialog by remember { mutableStateOf(false) }
     var programName by remember { mutableStateOf("") }
     var description by remember { mutableStateOf("") }
 
-    var currentScreen by remember { mutableStateOf("Home") } // Declared here
 
     Scaffold(
         containerColor = Color(0xFF282828),
@@ -39,13 +40,13 @@ fun MainScreen() {
         floatingActionButtonPosition = FabPosition.Center, // Correct position
         // Removed `isFloatingActionButtonDocked` as it might not be in Material 3
         bottomBar = {
-            BottomNavigationBar(currentScreen) { screen ->
-                currentScreen = screen
-                // Handle navigation logic here
-            }
+            BottomNavigationBar(navController.currentDestination?.route ?: ScreenRoutes.HOME, navController)
         }
+
     ){ innerPadding ->
-        BodyContent(innerPadding, showDialog, programName, onProgramNameChange = { programName = it }, description, onDescriptionChange = { description = it })
+        BodyContent(innerPadding, showDialog, programName, onProgramNameChange = { programName = it }, description, onDescriptionChange = { description = it }
+
+        )
     }
 
     if (showDialog) {
