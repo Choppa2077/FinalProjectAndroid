@@ -25,7 +25,7 @@ import java.util.*
 fun WeekCalendar() {
     val today = LocalDate.now()
     val startOfWeek = today.minusDays(today.dayOfWeek.value.toLong() - 1)
-    val datesOfWeek = (3..9).map { startOfWeek.plusDays(it.toLong()) }
+    val datesOfWeek = (0..9).map { startOfWeek.plusDays(it.toLong()) }
 
     LazyRow(
         modifier = Modifier

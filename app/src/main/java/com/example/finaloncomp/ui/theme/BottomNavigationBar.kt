@@ -12,19 +12,21 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.material3.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+
 
 
 @Composable
 fun BottomNavigationBar(currentScreen: String, onNavigationSelected: (String) -> Unit) {
-    val backgroundColor = Color(0xFF282828) // Define the color here
+    val backgroundColor = Color(0xFF414141) // Define the color here
 
     NavigationBar(
+        containerColor = Color(0xFF414141), // Set the background color of the NavigationBar
+        tonalElevation = 0.dp,
+    )
         // Now apply the background modifier with the defined color
-        modifier = Modifier
-            .background(color = backgroundColor, shape = RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp))
-            .then(Modifier.padding(0.dp))
-    ) {
+        {
 
         val items = listOf("Home", "Edit exercises", "Exercises", "Profile")
         items.forEach { screen ->
@@ -43,9 +45,9 @@ fun BottomNavigationBar(currentScreen: String, onNavigationSelected: (String) ->
                 onClick = { onNavigationSelected(screen) },
                 colors = NavigationBarItemDefaults.colors(
                     selectedIconColor = Color(0xFFFFC107),
-                    unselectedIconColor = Color.Gray,
+                    unselectedIconColor = Color.White,
                     selectedTextColor = Color.White,
-                    unselectedTextColor = Color.Gray
+                    unselectedTextColor = Color.White
                 )
             )
         }

@@ -24,7 +24,6 @@ fun MainScreen() {
     var programName by remember { mutableStateOf("") }
     var description by remember { mutableStateOf("") }
 
-    val backgroundColor = Color(0xFF282828)
     var currentScreen by remember { mutableStateOf("Home") } // Declared here
 
     Scaffold(

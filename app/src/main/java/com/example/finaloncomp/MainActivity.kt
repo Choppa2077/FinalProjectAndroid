@@ -50,7 +50,7 @@ class MainActivity : ComponentActivity() {
                             .padding(top = 16.dp)
                     ) {
                         MainScreen()
-                       
+
                     }
                 }
             }
