@@ -16,6 +16,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.navigation.NavHostController
+import com.example.finaloncomp.service.ApiService
+import com.example.finaloncomp.service.createApiService
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -25,7 +27,7 @@ fun MainScreen(navController: NavHostController) {
     var showDialog by remember { mutableStateOf(false) }
     var programName by remember { mutableStateOf("") }
     var description by remember { mutableStateOf("") }
-
+    val apiService = remember { createApiService() }
 
     Scaffold(
         containerColor = Color(0xFF282828),
@@ -41,8 +43,14 @@ fun MainScreen(navController: NavHostController) {
         // Removed `isFloatingActionButtonDocked` as it might not be in Material 3
 
     ){ innerPadding ->
-        BodyContent(innerPadding, showDialog, programName, onProgramNameChange = { programName = it }, description, onDescriptionChange = { description = it }
-
+        BodyContent(
+            innerPadding = innerPadding,
+            showDialog = showDialog,
+            programName = programName,
+            onProgramNameChange = { programName = it },
+            description = description,
+            onDescriptionChange = { description = it },
+            apiService = apiService // Pass the apiService here
         )
     }
 
@@ -69,7 +77,8 @@ fun BodyContent(
     programName: String,
     onProgramNameChange: (String) -> Unit,
     description: String,
-    onDescriptionChange: (String) -> Unit
+    onDescriptionChange: (String) -> Unit,
+    apiService: ApiService
 ) {
     Column(
         modifier = Modifier
@@ -83,7 +92,7 @@ fun BodyContent(
         Spacer(Modifier.height(16.dp))
         WorkoutCardsRow()
         Spacer(Modifier.height(16.dp))
-        ReadyWorkoutCardsRow()
+        ReadyWorkoutCardsRow(apiService)
     }
 }
 

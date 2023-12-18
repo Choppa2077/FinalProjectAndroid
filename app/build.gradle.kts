@@ -1,7 +1,10 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+//    id("org.jetbrains.kotlin.android") version "1.5.21" apply false
+    // ... other plugins
 }
+
 
 android {
     namespace = "com.example.finaloncomp"
@@ -69,5 +72,14 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest")
     implementation("androidx.compose.material:material-icons-extended:1.6.0-beta02")
     implementation("androidx.navigation:navigation-compose:2.4.0")
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.google.code.gson:gson:2.8.7")
+    implementation("androidx.compose.ui:ui:1.1.1")
+    implementation("androidx.compose.material:material:1.1.1")
+    implementation("androidx.compose.ui:ui-tooling-preview:1.1.1")
+    implementation("io.coil-kt:coil-compose:1.4.0") // Use the version compatible with your Compose version
+
+
 
 }
