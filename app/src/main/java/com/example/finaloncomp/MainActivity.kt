@@ -25,7 +25,9 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.finaloncomp.ui.theme.BottomNavigationBar
 import com.example.finaloncomp.ui.theme.FInalOnCompTheme
+import com.example.finaloncomp.ui.theme.MainScreen
 import com.example.finaloncomp.ui.theme.ReadyWorkoutCardsRow
 import com.example.finaloncomp.ui.theme.UserProfile
 import com.example.finaloncomp.ui.theme.WeekCalendar
@@ -47,13 +49,8 @@ class MainActivity : ComponentActivity() {
                             .fillMaxWidth()
                             .padding(top = 16.dp)
                     ) {
-                        UserProfile()
-                        Spacer(Modifier.height(16.dp))
-                        WeekCalendar()
-                        Spacer(Modifier.height(16.dp))
-                        WorkoutCardsRow()
-                        Spacer(Modifier.height(16.dp))
-                        ReadyWorkoutCardsRow()
+                        MainScreen()
+                       
                     }
                 }
             }
