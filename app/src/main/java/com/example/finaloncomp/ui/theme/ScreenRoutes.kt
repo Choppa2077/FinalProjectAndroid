@@ -4,5 +4,6 @@ package com.example.finaloncomp.ui.theme
 object ScreenRoutes {
     const val HOME = "home"
     const val EXERCISES = "exercises"
-    const val PROFILE = "profile"
+    const val PROGRAM = "program"
+    const val PROGRAM_EXERCISES = "program_exercises"
 }

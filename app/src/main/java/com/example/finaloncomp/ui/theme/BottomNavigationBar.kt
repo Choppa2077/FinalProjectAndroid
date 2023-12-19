@@ -37,8 +37,8 @@ fun BottomNavigationBar(
                 shape = RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp)
             )
     ) {
-        val items = listOf("Home",  "Exercises", "Profile")
-        val routes = listOf(ScreenRoutes.HOME,  ScreenRoutes.EXERCISES, ScreenRoutes.PROFILE)
+        val items = listOf("Home",  "Exercises", "Program", "Program Exercises")
+        val routes = listOf(ScreenRoutes.HOME,  ScreenRoutes.EXERCISES, ScreenRoutes.PROGRAM, ScreenRoutes.PROGRAM_EXERCISES)
 
         items.forEachIndexed { index, screen ->
             NavigationBarItem(
@@ -46,7 +46,8 @@ fun BottomNavigationBar(
                     when (screen) {
                         "Home" -> Icon(Icons.Filled.Home, contentDescription = null)
                         "Exercises" -> Icon(Icons.Filled.FitnessCenter, contentDescription = null)
-                        "Profile" -> Icon(Icons.Filled.Person, contentDescription = null)
+                        "Program" -> Icon(Icons.Filled.Person, contentDescription = null)
+                        "Program Exercises" -> Icon(Icons.Filled.Person, contentDescription = null)
                         else -> Icon(Icons.Filled.Home, contentDescription = null)
                     }
                 },

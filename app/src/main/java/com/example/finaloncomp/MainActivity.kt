@@ -38,6 +38,7 @@ import com.example.finaloncomp.ui.theme.UserProfile
 import com.example.finaloncomp.ui.theme.WeekCalendar
 import com.example.finaloncomp.ui.theme.WorkoutCardsRow
 import androidx.navigation.compose.rememberNavController
+import com.example.finaloncomp.ui.theme.MainContent
 import com.example.finaloncomp.ui.theme.ProfileScreen
 import com.example.finaloncomp.ui.theme.ScreenRoutes
 import com.example.finaloncomp.ui.theme.SystemExercisesScreen
@@ -70,8 +71,8 @@ class MainActivity : ComponentActivity() {
                                     NavHost(navController, startDestination = ScreenRoutes.HOME, Modifier.padding(innerPadding)) {
                                         composable(ScreenRoutes.HOME) { MainScreen(navController) }
                                         composable(ScreenRoutes.EXERCISES) { SystemExercisesScreen() }
-                                        composable(ScreenRoutes.PROFILE) { ProfileScreen() }
-                                        // Add other destinations here
+                                        composable(ScreenRoutes.PROGRAM) { MainContent() }
+
                                     }
                                 }
                             }

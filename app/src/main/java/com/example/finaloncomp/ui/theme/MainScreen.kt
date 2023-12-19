@@ -96,8 +96,6 @@ fun BodyContent(
     }
 }
 
-// Rest of your composables should be consistent with Material 3 usage
-
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

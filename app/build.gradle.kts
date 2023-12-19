@@ -4,7 +4,7 @@ plugins {
 //    id("org.jetbrains.kotlin.android") version "1.5.21" apply false
     // ... other plugins
 }
-
+val room_version = "2.4.2"
 
 android {
     namespace = "com.example.finaloncomp"
@@ -78,8 +78,10 @@ dependencies {
     implementation("androidx.compose.ui:ui:1.1.1")
     implementation("androidx.compose.material:material:1.1.1")
     implementation("androidx.compose.ui:ui-tooling-preview:1.1.1")
-    implementation("io.coil-kt:coil-compose:1.4.0") // Use the version compatible with your Compose version
-
-
+    implementation("io.coil-kt:coil-compose:1.4.0")
+    implementation("androidx.room:room-runtime:$room_version")
+    annotationProcessor("androidx.room:room-compiler:$room_version")
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation("androidx.room:room-ktx:$room_version")
 
 }

@@ -6,6 +6,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -14,6 +15,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextOverflow
@@ -52,8 +54,10 @@ fun ReadyWorkoutCard(photoInfo: PhotoInfo) {
         modifier = Modifier
             .width(200.dp)
             .padding(8.dp)
+            .clip(RoundedCornerShape(10.dp))
             .background(Color.DarkGray)
-            .padding(16.dp)
+            .padding(16.dp),
+
     ) {
         Image(
             painter = rememberImagePainter(data = photoInfo.url),
@@ -61,6 +65,7 @@ fun ReadyWorkoutCard(photoInfo: PhotoInfo) {
             modifier = Modifier
                 .height(100.dp)
                 .fillMaxWidth()
+                .clip(RoundedCornerShape(10.dp))
         )
         Spacer(modifier = Modifier.height(8.dp))
         Text(
