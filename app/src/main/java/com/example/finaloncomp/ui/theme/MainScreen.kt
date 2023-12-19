@@ -50,7 +50,8 @@ fun MainScreen(navController: NavHostController) {
             onProgramNameChange = { programName = it },
             description = description,
             onDescriptionChange = { description = it },
-            apiService = apiService // Pass the apiService here
+            apiService = apiService ,
+            navController = navController
         )
     }
 
@@ -78,7 +79,8 @@ fun BodyContent(
     onProgramNameChange: (String) -> Unit,
     description: String,
     onDescriptionChange: (String) -> Unit,
-    apiService: ApiService
+    apiService: ApiService,
+    navController: NavHostController
 ) {
     Column(
         modifier = Modifier
@@ -90,7 +92,7 @@ fun BodyContent(
         Spacer(Modifier.height(16.dp))
         WeekCalendar()
         Spacer(Modifier.height(16.dp))
-        WorkoutCardsRow()
+        WorkoutCardsRow(navController)
         Spacer(Modifier.height(16.dp))
         ReadyWorkoutCardsRow(apiService)
     }

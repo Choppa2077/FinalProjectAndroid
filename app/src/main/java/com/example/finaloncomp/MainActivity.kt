@@ -74,7 +74,7 @@ class MainActivity : ComponentActivity() {
                                     NavHost(navController, startDestination = ScreenRoutes.HOME, Modifier.padding(innerPadding)) {
                                         composable(ScreenRoutes.HOME) { MainScreen(navController) }
                                         composable(ScreenRoutes.EXERCISES) { SystemExercisesScreen() }
-                                        composable(ScreenRoutes.PROGRAM) { MainContent() }
+                                        composable(ScreenRoutes.PROGRAM) { MainContent(navController) }
                                         composable(ScreenRoutes.NEW) { MainContent2() }
                                     }
                                 }

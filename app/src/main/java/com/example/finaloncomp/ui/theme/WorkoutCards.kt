@@ -2,6 +2,7 @@ package com.example.finaloncomp.ui.theme
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -20,6 +21,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.finaloncomp.R // Replace with your actual resource directory
 
 
@@ -42,7 +44,7 @@ val workoutCards = listOf(
 
 
 @Composable
-fun WorkoutCard(cardInfo: WorkoutCardInfo) {
+fun WorkoutCard(cardInfo: WorkoutCardInfo, navController: NavController) {
     val painter = painterResource(id = cardInfo.imageRes)
     Column(
         modifier = Modifier
@@ -50,6 +52,7 @@ fun WorkoutCard(cardInfo: WorkoutCardInfo) {
             .padding(8.dp)
             .background(Color.DarkGray, shape = MaterialTheme.shapes.medium)
             .padding(16.dp)
+            .clickable { navController.navigate(ScreenRoutes.PROGRAM) }
     ) {
         Image(
             painter = painter, // Use the painter obtained from the resource ID
@@ -79,13 +82,13 @@ fun WorkoutCard(cardInfo: WorkoutCardInfo) {
 }
 
 @Composable
-fun WorkoutCardsRow() {
+fun WorkoutCardsRow(navController: NavController) {
     LazyRow(
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         contentPadding = PaddingValues(horizontal = 16.dp)
     ) {
         items(workoutCards) { cardInfo ->
-            WorkoutCard(cardInfo)
+            WorkoutCard(cardInfo, navController)
         }
     }
 }

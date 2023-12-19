@@ -42,11 +42,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.finaloncomp.R
 
 
 @Composable
-fun MainContent() {
+fun MainContent(navController: NavController) {
     val openDialog = remember { mutableStateOf(false) }
     // Define the background color for the entire screen
     val backgroundColor = Color(0xFF282828) // Replace with your desired color
@@ -60,7 +62,7 @@ fun MainContent() {
             modifier = Modifier
                 .verticalScroll(scrollState)
         ) {
-            WorkoutScreen()
+            WorkoutScreen(navController)
             WorkoutTimeline()
         }
     }
@@ -189,10 +191,14 @@ fun AddWorkoutDialog(onDismiss: () -> Unit) {
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    MainContent()
+    FInalOnCompTheme {
+        // Create a fake NavController that doesn't do anything
+        val fakeNavController = rememberNavController()
+        MainContent(fakeNavController)
+    }
 }
 @Composable
-fun WorkoutScreen() {
+fun WorkoutScreen(navController: NavController) {
     val Brown = Color(0xFF282828)
 
     Column(
@@ -203,7 +209,7 @@ fun WorkoutScreen() {
         TopAppBar(
             title = { Text("", color = Color.White) },
             navigationIcon = {
-                IconButton(onClick = { /* handle back press */ }) {
+                IconButton(onClick = { navController.popBackStack() }) {
                     Icon(Icons.Filled.ArrowBack, contentDescription = "Go back", tint = Color.White)
                 }
             },
