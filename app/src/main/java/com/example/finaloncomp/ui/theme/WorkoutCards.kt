@@ -35,7 +35,7 @@ data class WorkoutCardInfo(
 // Dummy data
 
 val workoutCards = listOf(
-    WorkoutCardInfo("Abdomen", "It seems like you're interested in abdominal exercises...", R.drawable.abdomen),
+    WorkoutCardInfo("Abdomen", "Lorem ipsum", R.drawable.abdomen),
     WorkoutCardInfo("Abs", "Lorem Ipsum...", R.drawable.abdomen2),
     WorkoutCardInfo("Biceps", "Lorem Ipsum...", R.drawable.abdomen3),
     WorkoutCardInfo("Back", "Lorem Ipsum...", R.drawable.abdomen4),

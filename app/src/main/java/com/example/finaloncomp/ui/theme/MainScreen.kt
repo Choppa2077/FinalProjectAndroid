@@ -13,6 +13,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.navigation.NavHostController
@@ -89,11 +90,15 @@ fun BodyContent(
             .verticalScroll(rememberScrollState())
     ) {
         UserProfile()
-        Spacer(Modifier.height(16.dp))
+        Spacer(Modifier.height(8.dp))
         WeekCalendar()
-        Spacer(Modifier.height(16.dp))
+        Spacer(Modifier.height(8.dp))
+        MyWorkoutsHeading()
+        Spacer(Modifier.height(3.dp))
         WorkoutCardsRow(navController)
-        Spacer(Modifier.height(16.dp))
+        Spacer(Modifier.height(8.dp))
+        ReadyWorkoutsHeading()
+        Spacer(Modifier.height(3.dp))
         ReadyWorkoutCardsRow(apiService)
     }
 }
@@ -151,4 +156,24 @@ fun CreateProgramDialog(
             }
         }
     }
+}
+
+@Composable
+fun MyWorkoutsHeading() {
+    Text(
+        text = "My Workouts",
+        color = Color.White,
+        style = MaterialTheme.typography.headlineMedium.copy(fontWeight = FontWeight.Bold),
+        modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
+    )
+}
+
+@Composable
+fun ReadyWorkoutsHeading() {
+    Text(
+        text = "Ready Workouts",
+        color = Color.White,
+        style = MaterialTheme.typography.headlineMedium.copy(fontWeight = FontWeight.Bold),
+        modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
+    )
 }
