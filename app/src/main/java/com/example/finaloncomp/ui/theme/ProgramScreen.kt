@@ -44,12 +44,7 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import com.example.finaloncomp.R
 
-//@Composable
-//fun ProgramScreen() {
-//    // Use the code from the MainActivity.kt you uploaded to create the UI here
-//    // For example, if the uploaded MainActivity has methods to create a UI, convert those to composable
-//    Text(text = "saom")
-//}
+
 @Composable
 fun MainContent() {
     val openDialog = remember { mutableStateOf(false) }
