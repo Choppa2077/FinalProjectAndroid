@@ -75,7 +75,7 @@ class MainActivity : ComponentActivity() {
                                         composable(ScreenRoutes.HOME) { MainScreen(navController) }
                                         composable(ScreenRoutes.EXERCISES) { SystemExercisesScreen() }
                                         composable(ScreenRoutes.PROGRAM) { MainContent(navController) }
-                                        composable(ScreenRoutes.NEW) { MainContent2() }
+                                        composable(ScreenRoutes.NEW) { MainContent2(navController) }
                                     }
                                 }
                             }

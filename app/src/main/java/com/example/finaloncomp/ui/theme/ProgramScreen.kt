@@ -63,7 +63,7 @@ fun MainContent(navController: NavController) {
                 .verticalScroll(scrollState)
         ) {
             WorkoutScreen(navController)
-            WorkoutTimeline()
+            WorkoutTimeline(navController)
         }
     }
     Box(
@@ -262,7 +262,7 @@ fun WorkoutScreen(navController: NavController) {
 
 }
 @Composable
-fun WorkoutTimeline() {
+fun WorkoutTimeline(navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -294,6 +294,7 @@ fun WorkoutTimeline() {
             Spacer(modifier = Modifier.width(8.dp))
             Column(
                 modifier = Modifier.weight(1f)
+                    .clickable { navController.navigate(ScreenRoutes.NEW) }
             ) {
                 Text(
                     text = "Workout A",
@@ -343,6 +344,7 @@ fun WorkoutTimeline() {
             Spacer(modifier = Modifier.width(8.dp))
             Column(
                 modifier = Modifier.weight(1f)
+                    .clickable { navController.navigate(ScreenRoutes.NEW) }
             ) {
                 Text(
                     text = "Workout B",

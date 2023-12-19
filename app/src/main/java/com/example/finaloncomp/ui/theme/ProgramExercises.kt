@@ -49,10 +49,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.finaloncomp.R
 
 @Composable
-fun MainContent2() {
+fun MainContent2(navController: NavController) {
     val backgroundColor = Color(0xFF282828)
     Surface(
         modifier = Modifier.fillMaxSize(),
@@ -65,7 +67,7 @@ fun MainContent2() {
         ) {
 //            WorkoutScreen()
 //            WorkoutTimeline()
-            WorkoutScreenLayout()
+            WorkoutScreenLayout(navController)
             WorkoutStatsCard()
             ExerciseList()
             StartWorkoutButton()
@@ -75,10 +77,14 @@ fun MainContent2() {
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview2() {
-    MainContent2()
+    FInalOnCompTheme {
+        // Create a fake NavController that doesn't do anything
+        val fakeNavController = rememberNavController()
+        MainContent2(fakeNavController)
+    }
 }
 @Composable
-fun WorkoutScreenLayout() {
+fun WorkoutScreenLayout(navController: NavController) {
     val Brown = Color(0xFF282828)
     Column(
         modifier = Modifier
@@ -88,7 +94,7 @@ fun WorkoutScreenLayout() {
         TopAppBar(
             title = { Text("", color = Color.White) },
             navigationIcon = {
-                IconButton(onClick = { /* handle back press */ }) {
+                IconButton(onClick = { navController.popBackStack() }) {
                     Icon(Icons.Filled.ArrowBack, contentDescription = "Go back", tint = Color.White)
                 }
             },
